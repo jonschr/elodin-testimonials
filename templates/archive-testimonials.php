@@ -8,7 +8,8 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 function new_excerpt_more( $more ) {
 	return '...';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+// add_filter('excerpt_more', 'new_excerpt_more');
+
 
 /** Code for custom loop */
 function testimonials_archive_loop() {
@@ -32,6 +33,8 @@ function testimonials_archive_loop() {
 						$urlwithoutwww = str_replace( 'www.', '', $url );
 						$urlwithouthttp = str_replace( 'http://', '', $urlwithoutwww );
 						$urlwithouthttps = str_replace( 'https://', '', $urlwithouthttp );
+
+						
 						
 						?>
 					</div>

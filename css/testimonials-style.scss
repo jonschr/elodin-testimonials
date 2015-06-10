@@ -33,6 +33,16 @@
 	margin-left: 5px;
 }
 
+.has-post-thumbnail {
+	.testimonials-content:before {
+		margin-left: 100px;
+	}
+
+	.testimonials-content:after {
+		margin-left: 105px;
+	}
+}
+
 .testimonials-author {
 	font-size: 22px;
 	margin-left: 40px;
