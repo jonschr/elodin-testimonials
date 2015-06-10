@@ -30,7 +30,7 @@ function testimonials_register_post_type() {
 		'hierarchical' => false,
 		'menu_position' => null,
 		'menu_icon' => 'dashicons-format-chat',
-		'supports' => array('title', 'editor', 'genesis-cpt-archives-settings')
+		'supports' => array( 'title', 'editor', 'genesis-cpt-archives-settings', 'thumbnail' )
 	); 
 
 	register_post_type( 'testimonials', $args );

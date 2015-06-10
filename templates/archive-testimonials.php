@@ -19,12 +19,29 @@ function testimonials_archive_loop() {
     		?>
 
 			<div <?php post_class(); ?>>
-				<div class="testimonial-entry">
-					<div class="testimonial-content">
-						<?php the_content(); ?>
-						<?php edit_post_link( 'Edit this testimonial', '<p><small>', '</small></p>' ); ?>
+				<div class="testimonials-entry">
+					<div class="testimonials-content">
+						<?php
+
+						the_content();
+						edit_post_link( 'Edit this testimonial', '<p><small>', '</small></p>' );
+						
+						$title = get_post_meta( get_the_ID(), '_rbt_testimonials_title', true );
+						
+						$url = get_post_meta( get_the_ID(), '_rbt_testimonials_url', true );
+						$urlwithoutwww = str_replace( 'www.', '', $url );
+						$urlwithouthttp = str_replace( 'http://', '', $urlwithoutwww );
+						$urlwithouthttps = str_replace( 'https://', '', $urlwithouthttp );
+						
+						?>
 					</div>
-					<h2 class="testimonial-title">- <?php the_title(); ?></h2>
+					<?php the_post_thumbnail( 'rbt_testimonials_image_square' ); ?>
+					<cite class="testimonials-author">
+						<span class="testimonials-name"><?php the_title(); ?></span>
+						<span class="testimonials-title"><?php echo $title; ?></span>
+						<a target="_blank" href="<?php echo $url; ?>" class="testimonials-url"><?php echo $urlwithouthttps; ?></a>
+					</cite>
+					
 				</div>
 			</div>
 

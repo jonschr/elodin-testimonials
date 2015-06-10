@@ -27,6 +27,9 @@ include_once( 'lib/post_type.php' );
 //* Customize the admin panel
 include_once( 'lib/admin.php' );
 
+// Custom meta (using the CMB library)
+include_once( 'lib/metabox/metabox.php' );
+
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'testimonials_add_scripts' );
 function testimonials_add_scripts() {
@@ -72,3 +75,8 @@ function rb_redirect_testimonials_single_to_archive()
     exit;
 }
 add_action( 'template_redirect', 'rb_redirect_testimonials_single_to_archive' );
+
+/**
+ * Add an image size
+ */
+add_image_size( 'rbt_testimonials_image_square', 160, 160, true );

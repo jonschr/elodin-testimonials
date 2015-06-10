@@ -4,7 +4,7 @@ function rbt_custom_title_admin( $title ){
      $screen = get_current_screen();
  
      if  ( 'testimonials' == $screen->post_type ) {
-          $title = 'Enter the name of the person giving the testimonial here';
+          $title = 'Steve Jobs';
      }
  
      return $title;
@@ -15,7 +15,7 @@ function rbt_content_admin( $content, $post ) {
 
     switch( $post->post_type ) {
         case 'testimonials':
-            $content = 'Enter the quote here, with no quotation marks (and delete this sentence).';
+            $content = 'I absolutely love ' . get_bloginfo( 'name' ) . ', and I heartily recommend them to everyone I know!';
         break;
         default:
             $content = '';
