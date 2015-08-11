@@ -42,7 +42,13 @@ function testimonials_archive_loop() {
 					<cite class="testimonials-author">
 						<span class="testimonials-name"><?php the_title(); ?></span>
 						<span class="testimonials-title"><?php echo $title; ?></span>
+
+						<?php if ( !empty( $url ) ) {
+							?>
 						<a target="_blank" href="<?php echo $url; ?>" class="testimonials-url"><?php echo $urlwithouthttps; ?></a>
+							<?php
+						}
+						?>
 					</cite>
 					
 				</div>
