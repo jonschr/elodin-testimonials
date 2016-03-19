@@ -10,10 +10,9 @@ function new_excerpt_more( $more ) {
 }
 // add_filter('excerpt_more', 'new_excerpt_more');
 
-
 /** Code for custom loop */
 function testimonials_archive_loop() {
-
+	global $paged;
     if ( have_posts() ) {
     	while ( have_posts() ) {
     		the_post(); 
@@ -57,6 +56,9 @@ function testimonials_archive_loop() {
 			<?php
     	} // end while
     } // end if
+
+    genesis_posts_nav();
+    wp_reset_query();
 }
  
 /** Replace the standard loop with our custom loop */
