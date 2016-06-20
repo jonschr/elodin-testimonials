@@ -80,3 +80,63 @@ add_action( 'template_redirect', 'rb_redirect_testimonials_single_to_archive' );
  * Add an image size
  */
 add_image_size( 'rbt_testimonials_image_square', 160, 160, true );
+
+/**
+ * Return Section (for template selection)
+ * @link http://www.billerickson.net/code/helper-function-for-template-include-and-body-class/
+ * 
+ * @param null
+ * @return string
+ */
+function redblue_testimonials_return_section() {
+    if ( is_post_type_archive( 'testimonials' ) )
+        return 'archive-testimonials'; // we are returning the name of the template file with the .php stripped
+    if ( is_singular( 'testimonials' ) )
+        return 'single-testimonials';
+    return false;
+}
+/**
+ * Template Chooser
+ * Use CPT archive templates for taxonomies
+ * @link http://www.billerickson.net/code/use-same-template-for-taxonomy-and-cpt-archive/
+ *
+ * @param string, default template path
+ * @return string, modified template path
+ *
+ */
+add_filter( 'template_include', 'redblue_testimonials_template_chooser' );
+function redblue_testimonials_template_chooser( $template ) {
+    if ( redblue_testimonials_return_section() ) {
+        
+        //* Get the filename of the location in the theme where the override template would live
+        $template_in_theme = get_query_template( redblue_testimonials_return_section() ); 
+        // echo 'Theme template method 1: ' . $template_in_theme . '</br>';
+        
+        //* Get the filename of the location in the plugin where our default template lives
+        $template_in_plugin = dirname( __FILE__ ) . '/templates/' . redblue_testimonials_return_section() . '.php';
+        // echo 'Plugin template: ' . $template_in_plugin . '</br>';
+        
+        //* If this specific template is in the theme, we'll use that as our first choice
+        if ( file_exists( $template_in_theme ) )
+            return $template_in_theme;        
+        
+        //* If this specific template is in the plugin, we'll use that next
+        if ( file_exists( $template_in_plugin ) )
+            return $template_in_plugin;
+    }  
+    //* If we don't have either of those, we'll just return whatever the original $template value was
+    return $template;
+}
+/**
+ * Section Body Classes
+ * @author Bill Erickson
+ * 
+ * @param array $classes
+ * @return array
+ */
+add_filter( 'body_class', 'redblue_testimonials_section_body_classes' );
+function redblue_testimonials_section_body_classes( $classes ) {
+    if ( redblue_testimonials_return_section() )
+        $classes[] = 'section-' . redblue_testimonials_return_section();
+    return $classes;
+}
