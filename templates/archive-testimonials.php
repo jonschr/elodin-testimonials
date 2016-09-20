@@ -15,9 +15,8 @@ function testimonials_archive_loop() {
 	global $paged;
     if ( have_posts() ) {
     	while ( have_posts() ) {
-    		the_post(); 
+    		the_post();
     		?>
-
 			<div <?php post_class(); ?>>
 				<div class="testimonials-entry">
 					<div class="testimonials-content">
@@ -25,16 +24,16 @@ function testimonials_archive_loop() {
 
 						the_content();
 						edit_post_link( 'Edit this testimonial', '<p><small>', '</small></p>' );
-						
+
 						$title = get_post_meta( get_the_ID(), '_rbt_testimonials_title', true );
-						
+
 						$url = get_post_meta( get_the_ID(), '_rbt_testimonials_url', true );
 						$urlwithoutwww = str_replace( 'www.', '', $url );
 						$urlwithouthttp = str_replace( 'http://', '', $urlwithoutwww );
 						$urlwithouthttps = str_replace( 'https://', '', $urlwithouthttp );
 
-						
-						
+
+
 						?>
 					</div>
 					<?php the_post_thumbnail( 'rbt_testimonials_image_square' ); ?>
@@ -49,7 +48,7 @@ function testimonials_archive_loop() {
 						}
 						?>
 					</cite>
-					
+
 				</div>
 			</div>
 
@@ -60,7 +59,7 @@ function testimonials_archive_loop() {
     genesis_posts_nav();
     wp_reset_query();
 }
- 
+
 /** Replace the standard loop with our custom loop */
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'testimonials_archive_loop' );

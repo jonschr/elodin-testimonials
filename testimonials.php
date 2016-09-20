@@ -18,11 +18,14 @@
     GNU General Public License for more details.
 */
 
-// Plugin directory 
+// Plugin directory
 define( 'RBT_DIR', dirname( __FILE__ ) );
 
 //* Register the post type
 include_once( 'lib/post_type.php' );
+
+//* Register the taxonomies
+include_once( 'lib/taxonomy.php' );
 
 //* Customize the admin panel
 include_once( 'lib/admin.php' );
@@ -33,7 +36,7 @@ include_once( 'lib/metabox/metabox.php' );
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'testimonials_add_scripts' );
 function testimonials_add_scripts() {
-    
+
     wp_register_style( 'testimonials-style', plugins_url( '/css/testimonials-style.css', __FILE__) );
     wp_enqueue_style( 'testimonials-style' );
 
@@ -43,7 +46,7 @@ function testimonials_add_scripts() {
 function testimonials_archive_template( $archive_template ) {
      global $post;
 
-     if ( is_post_type_archive ( 'testimonials' ) ) {
+     if ( is_post_type_archive ( 'testimonials' ) || is_tax( 'testimonialcategories' ) ) {
           $archive_template = dirname( __FILE__ ) . '/templates/archive-testimonials.php';
      }
      return $archive_template;
@@ -56,7 +59,7 @@ function rb_testimonials_query( $query ) {
     if ( is_admin() || ! $query->is_main_query() )
         return;
 
-    if ( is_post_type_archive( 'testimonials' ) ) {
+    if ( is_post_type_archive( 'testimonials' ) || is_tax( 'testimonialcategories' ) ) {
         $query->set( 'posts_per_page', -1 );
         return;
     }
@@ -84,7 +87,7 @@ add_image_size( 'rbt_testimonials_image_square', 160, 160, true );
 /**
  * Return Section (for template selection)
  * @link http://www.billerickson.net/code/helper-function-for-template-include-and-body-class/
- * 
+ *
  * @param null
  * @return string
  */
@@ -107,30 +110,30 @@ function redblue_testimonials_return_section() {
 add_filter( 'template_include', 'redblue_testimonials_template_chooser' );
 function redblue_testimonials_template_chooser( $template ) {
     if ( redblue_testimonials_return_section() ) {
-        
+
         //* Get the filename of the location in the theme where the override template would live
-        $template_in_theme = get_query_template( redblue_testimonials_return_section() ); 
+        $template_in_theme = get_query_template( redblue_testimonials_return_section() );
         // echo 'Theme template method 1: ' . $template_in_theme . '</br>';
-        
+
         //* Get the filename of the location in the plugin where our default template lives
         $template_in_plugin = dirname( __FILE__ ) . '/templates/' . redblue_testimonials_return_section() . '.php';
         // echo 'Plugin template: ' . $template_in_plugin . '</br>';
-        
+
         //* If this specific template is in the theme, we'll use that as our first choice
         if ( file_exists( $template_in_theme ) )
-            return $template_in_theme;        
-        
+            return $template_in_theme;
+
         //* If this specific template is in the plugin, we'll use that next
         if ( file_exists( $template_in_plugin ) )
             return $template_in_plugin;
-    }  
+    }
     //* If we don't have either of those, we'll just return whatever the original $template value was
     return $template;
 }
 /**
  * Section Body Classes
  * @author Bill Erickson
- * 
+ *
  * @param array $classes
  * @return array
  */
