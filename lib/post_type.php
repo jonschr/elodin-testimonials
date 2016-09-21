@@ -1,5 +1,8 @@
 <?php
 
+add_action( 'init', 'testimonials_register_post_type' );
+
+
 function testimonials_register_post_type() {
 	$labels = array(
 		'name' => 'Testimonials',
@@ -20,20 +23,19 @@ function testimonials_register_post_type() {
 		'labels' => $labels,
 		'public' => true,
 		'publicly_queryable' => true,
-		'show_ui' => true, 
-		'show_in_menu' => true, 
+		'show_ui' => true,
+		'show_in_menu' => true,
 		'query_var' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
 		'rewrite' => array( 'slug' => 'testimonials' ),
-		'has_archive' => true, 
+		'has_archive' => true,
 		'hierarchical' => false,
 		'menu_position' => null,
 		'menu_icon' => 'dashicons-format-chat',
 		'supports' => array( 'title', 'editor', 'genesis-cpt-archives-settings', 'thumbnail' )
-	); 
+	);
 
 	register_post_type( 'testimonials', $args );
 
 }
-add_action( 'init', 'testimonials_register_post_type' );	
