@@ -31,12 +31,12 @@ function testimonials_archive_loop() {
 						$urlwithoutwww = str_replace( 'www.', '', $url );
 						$urlwithouthttp = str_replace( 'http://', '', $urlwithoutwww );
 						$urlwithouthttps = str_replace( 'https://', '', $urlwithouthttp );
-
-
-
 						?>
+
 					</div>
+
 					<?php the_post_thumbnail( 'rbt_testimonials_image_square' ); ?>
+
 					<cite class="testimonials-author">
 						<span class="testimonials-name"><?php the_title(); ?></span>
 						<span class="testimonials-title"><?php echo $title; ?></span>
