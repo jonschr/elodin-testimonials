@@ -30,6 +30,9 @@ include_once( 'lib/taxonomy.php' );
 //* Customize the admin panel
 include_once( 'lib/admin.php' );
 
+//* Add a shortcode
+include_once( 'templates/shortcode.php' );
+
 // Custom meta (using the CMB library)
 include_once( 'lib/metabox/metabox.php' );
 
@@ -38,7 +41,6 @@ add_action( 'wp_enqueue_scripts', 'testimonials_add_scripts' );
 function testimonials_add_scripts() {
 
     wp_register_style( 'testimonials-style', plugins_url( '/css/testimonials-style.css', __FILE__) );
-    wp_enqueue_style( 'testimonials-style' );
 
 }
 
