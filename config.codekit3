@@ -1343,6 +1343,12 @@
 		"oAP": "\/templates\/archive-testimonials.php",
 		"oF": 0
 		},
+	"\/templates\/shortcode.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/templates\/shortcode.php",
+		"oF": 0
+		},
 	"\/testimonials.php": {
 		"ft": 8192,
 		"oA": 2,
