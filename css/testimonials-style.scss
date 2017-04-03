@@ -2,7 +2,12 @@
    Testimonials default styles
    ========================================================================== */
 
-.testimonials-container {
+.loop-layout-testimonials {
+	padding-top: 0;
+}
+
+.testimonials-container,
+.loop-layout-testimonials {
 	margin-bottom: 40px;
 
 	.entry.type-testimonials {

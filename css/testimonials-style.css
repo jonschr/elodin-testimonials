@@ -1,26 +1,35 @@
 /* ==========================================================================
    Testimonials default styles
    ========================================================================== */
-/* line 5, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-.testimonials-container {
+/* line 5, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+.loop-layout-testimonials {
+  padding-top: 0; }
+
+/* line 9, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+.testimonials-container,
+.loop-layout-testimonials {
   margin-bottom: 40px; }
-  /* line 8, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .entry.type-testimonials {
+  /* line 13, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .entry.type-testimonials,
+  .loop-layout-testimonials .entry.type-testimonials {
     padding: 0;
     background-color: transparent; }
-  /* line 13, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-content {
+  /* line 18, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-content,
+  .loop-layout-testimonials .testimonials-content {
     border: 3px solid #ebebeb;
     background-color: white;
     border-radius: 10px;
     padding: 20px 30px 10px;
     margin-bottom: 25px;
     position: relative; }
-    /* line 21, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-    .testimonials-container .testimonials-content p {
+    /* line 26, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+    .testimonials-container .testimonials-content p,
+    .loop-layout-testimonials .testimonials-content p {
       margin-bottom: 10px; }
-  /* line 26, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-content:before {
+  /* line 31, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-content:before,
+  .loop-layout-testimonials .testimonials-content:before {
     content: "";
     display: block;
     position: absolute;
@@ -29,8 +38,9 @@
     border-style: solid;
     bottom: -40px;
     margin-left: 0px; }
-  /* line 37, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-content:after {
+  /* line 42, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-content:after,
+  .loop-layout-testimonials .testimonials-content:after {
     content: "";
     display: block;
     position: absolute;
@@ -39,38 +49,46 @@
     border-style: solid;
     bottom: -30px;
     margin-left: 5px; }
-  /* line 49, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .has-post-thumbnail .testimonials-content:before {
+  /* line 54, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .has-post-thumbnail .testimonials-content:before,
+  .loop-layout-testimonials .has-post-thumbnail .testimonials-content:before {
     margin-left: 100px; }
-  /* line 53, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .has-post-thumbnail .testimonials-content:after {
+  /* line 58, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .has-post-thumbnail .testimonials-content:after,
+  .loop-layout-testimonials .has-post-thumbnail .testimonials-content:after {
     margin-left: 105px; }
-  /* line 58, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-author {
+  /* line 63, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-author,
+  .loop-layout-testimonials .testimonials-author {
     font-size: 22px;
     margin-left: 40px;
     display: block;
     font-style: normal;
     line-height: 1em; }
-  /* line 66, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-name {
+  /* line 71, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-name,
+  .loop-layout-testimonials .testimonials-name {
     display: block;
     font-weight: bold;
     line-height: 1.2em; }
-  /* line 72, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-title {
+  /* line 77, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-title,
+  .loop-layout-testimonials .testimonials-title {
     font-size: 15px;
     text-transform: uppercase; }
-  /* line 77, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .testimonials-url {
+  /* line 82, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .testimonials-url,
+  .loop-layout-testimonials .testimonials-url {
     display: block;
     font-size: 14px; }
-  /* line 82, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .type-testimonials.entry {
+  /* line 87, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .type-testimonials.entry,
+  .loop-layout-testimonials .type-testimonials.entry {
     display: block;
     margin-bottom: 50px; }
-  /* line 87, /Users/jonschroeder/Documents/Websites/Naked Clean/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
-  .testimonials-container .attachment-rbt_testimonials_image_square.wp-post-image {
+  /* line 92, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  .testimonials-container .attachment-rbt_testimonials_image_square.wp-post-image,
+  .loop-layout-testimonials .attachment-rbt_testimonials_image_square.wp-post-image {
     float: left;
     margin: -40px 25px 25px -45px;
     width: 160px;
