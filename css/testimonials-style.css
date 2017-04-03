@@ -2,22 +2,27 @@
    Testimonials default styles
    ========================================================================== */
 /* line 5, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+.post-type-archive-testimonials .site-inner {
+  padding-bottom: 40px; }
+
+/* line 9, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
 .loop-layout-testimonials {
   padding-top: 10px; }
 
-/* line 9, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+/* line 13, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
 .testimonials-container,
 .loop-layout-testimonials {
   margin-bottom: 40px;
   text-align: left; }
-  /* line 14, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 18, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .entry.type-testimonials,
   .testimonials-container .testimonials-entry,
   .loop-layout-testimonials .entry.type-testimonials,
   .loop-layout-testimonials .testimonials-entry {
     padding: 0;
-    background-color: transparent; }
-  /* line 20, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+    background-color: transparent;
+    margin-bottom: 30px; }
+  /* line 25, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-content,
   .loop-layout-testimonials .testimonials-content {
     border: 3px solid #ebebeb;
@@ -26,11 +31,11 @@
     padding: 20px 30px;
     margin-bottom: 25px;
     position: relative; }
-    /* line 28, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+    /* line 33, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
     .testimonials-container .testimonials-content p,
     .loop-layout-testimonials .testimonials-content p {
       margin-bottom: 10px; }
-  /* line 33, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 38, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-content:before,
   .loop-layout-testimonials .testimonials-content:before {
     content: "";
@@ -41,7 +46,7 @@
     border-style: solid;
     bottom: -40px;
     margin-left: 0px; }
-  /* line 44, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 49, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-content:after,
   .loop-layout-testimonials .testimonials-content:after {
     content: "";
@@ -52,15 +57,15 @@
     border-style: solid;
     bottom: -30px;
     margin-left: 5px; }
-  /* line 56, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 61, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .has-post-thumbnail .testimonials-content:before,
   .loop-layout-testimonials .has-post-thumbnail .testimonials-content:before {
     margin-left: 100px; }
-  /* line 60, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 65, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .has-post-thumbnail .testimonials-content:after,
   .loop-layout-testimonials .has-post-thumbnail .testimonials-content:after {
     margin-left: 105px; }
-  /* line 65, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 70, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-author,
   .loop-layout-testimonials .testimonials-author {
     font-size: 22px;
@@ -68,28 +73,28 @@
     display: block;
     font-style: normal;
     line-height: 1em; }
-  /* line 73, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 78, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-name,
   .loop-layout-testimonials .testimonials-name {
     display: block;
     font-weight: bold;
     line-height: 1.2em; }
-  /* line 79, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 84, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-title,
   .loop-layout-testimonials .testimonials-title {
     font-size: 15px;
     text-transform: uppercase; }
-  /* line 84, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 89, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .testimonials-url,
   .loop-layout-testimonials .testimonials-url {
     display: block;
     font-size: 14px; }
-  /* line 89, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 94, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .type-testimonials.entry,
   .loop-layout-testimonials .type-testimonials.entry {
     display: block;
     margin-bottom: 40px; }
-  /* line 94, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
+  /* line 99, Users/jonschroeder/Documents/Websites/tdi/app/public/wp-content/plugins/redblue-testimonials/css/testimonials-style.scss */
   .testimonials-container .attachment-rbt_testimonials_image_square.wp-post-image,
   .loop-layout-testimonials .attachment-rbt_testimonials_image_square.wp-post-image {
     float: left;

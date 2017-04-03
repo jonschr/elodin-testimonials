@@ -2,6 +2,10 @@
    Testimonials default styles
    ========================================================================== */
 
+.post-type-archive-testimonials .site-inner {
+	padding-bottom: 40px;
+}
+
 .loop-layout-testimonials {
 	padding-top: 10px;
 }
@@ -15,6 +19,7 @@
 	.testimonials-entry {
 		padding: 0;
 		background-color: transparent;
+		margin-bottom: 30px;
 	}
 
 	.testimonials-content {
