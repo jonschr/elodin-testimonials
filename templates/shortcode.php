@@ -12,7 +12,7 @@ function testimonials_do_before() {
 //* A function which takes the post ID and outputs the markup for a single testimonial
 function testimonials_do_single( $post_id ) {
 	$post_class = implode( get_post_class(), ' ' );
-	printf( '<div %s>', $post_class );
+	// printf( '<div class="%s">', $post_class );
 	?>
 		<div class="testimonials-entry">
 			<div class="testimonials-content">
@@ -46,7 +46,6 @@ function testimonials_do_single( $post_id ) {
 			</cite>
 
 		</div>
-	</div>
 	<?php
 }
 

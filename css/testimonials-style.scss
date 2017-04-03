@@ -3,14 +3,16 @@
    ========================================================================== */
 
 .loop-layout-testimonials {
-	padding-top: 0;
+	padding-top: 10px;
 }
 
 .testimonials-container,
 .loop-layout-testimonials {
 	margin-bottom: 40px;
+	text-align: left;
 
-	.entry.type-testimonials {
+	.entry.type-testimonials,
+	.testimonials-entry {
 		padding: 0;
 		background-color: transparent;
 	}
@@ -19,7 +21,7 @@
 		border: 3px solid #ebebeb;
 		background-color: white;
 		border-radius: 10px;
-		padding: 20px 30px 10px;
+		padding: 20px 30px;
 		margin-bottom: 25px;
 		position: relative;
 
@@ -86,7 +88,7 @@
 
 	.type-testimonials.entry {
 		display: block;
-		margin-bottom: 50px;
+		margin-bottom: 40px;
 	}
 
 	.attachment-rbt_testimonials_image_square.wp-post-image {
