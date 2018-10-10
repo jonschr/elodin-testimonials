@@ -1,11 +1,12 @@
 <?php
 /*
-	Plugin Name: Red Blue Testimonials
-	Plugin URI: http://redblue.us
+	Plugin Name: Elodin Testimonials
+	Plugin URI: https://github.com/jonschr/elodin-testimonials
+    GitHub Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.1
+	Version: 1.1.1
     Author: Jon Schroeder
-    Author URI: http://redblue.us
+    Author URI: https://elod.in
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
