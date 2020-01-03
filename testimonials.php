@@ -4,7 +4,7 @@
 	Plugin URI: https://github.com/jonschr/elodin-testimonials
     GitHub Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.1.1
+	Version: 1.2.0
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -30,6 +30,9 @@ include_once( 'lib/taxonomy.php' );
 
 //* Customize the admin panel
 include_once( 'lib/admin.php' );
+
+//* Admin Columns Pro settings
+include_once( 'lib/admin_columns.php' );
 
 //* Add a shortcode
 include_once( 'templates/shortcode.php' );
