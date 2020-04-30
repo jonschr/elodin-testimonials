@@ -3,7 +3,7 @@
 	Plugin Name: Elodin Testimonials
 	Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.2.1
+	Version: 1.3
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -19,7 +19,10 @@
 */
 
 // Plugin directory
-define( 'RBT_DIR', dirname( __FILE__ ) );
+define( 'ELODIN_TESTIMONIALS', dirname( __FILE__ ) );
+
+// Define the version of the plugin
+define ( 'ELODIN_TESTIMONIALS_VERSION', '1.3' );
 
 //* Register the post type
 include_once( 'lib/post_type.php' );
@@ -43,9 +46,25 @@ include_once( 'lib/metabox/metabox.php' );
 add_action( 'wp_enqueue_scripts', 'testimonials_add_scripts' );
 function testimonials_add_scripts() {
 
-    wp_register_style( 'testimonials-style', plugins_url( '/css/testimonials-style.css', __FILE__) );
+    wp_register_style( 
+        'testimonials-style', 
+        plugins_url( '/css/testimonials-style.css', __FILE__), 
+        array(), 
+        ELODIN_TESTIMONIALS_VERSION 
+    );
+
+    wp_register_script(
+		'muuri-main',
+		plugin_dir_url( __FILE__ ) . 'vendor/muuri/muuri.min.js',
+		array( 'jquery' ),
+		ELODIN_TESTIMONIALS_VERSION,
+		true
+	);
 
 }
+
+//* Layouts
+require_once( 'layout/testimonial-grid.php' );
 
 //* Testimonials archive template
 function testimonials_archive_template( $archive_template ) {

@@ -1,107 +1,48 @@
 /* ==========================================================================
-   Testimonials default styles
+   Vars
    ========================================================================== */
 
-.post-type-archive-testimonials .site-inner {
-    padding-bottom: 40px;
-}
+$headerheightdesktop: 154px;
+$headerheighttablet: 77px;
+$headerheightmobile: 77px;
 
-.loop-layout-testimonials {
-    padding-top: 10px;
-}
+/* ==========================================================================
+   Queries
+   ========================================================================== */
 
-.testimonials-container,
-.loop-layout-testimonials {
-    margin-bottom: 40px;
-    text-align: left;
+$thin: 600px;
+$medium: 960px;
+$wide: 1200px;
 
-    .entry.type-testimonials,
-    .testimonials-entry {
-        padding: 0;
-        background-color: transparent;
-        margin-bottom: 30px;
-    }
-
-    .testimonials-content {
-        border: 3px solid #ebebeb;
-        background-color: white;
-        border-radius: 10px;
-        padding: 20px 30px;
-        margin-bottom: 25px;
-        position: relative;
-
-        p {
-            margin-bottom: 10px;
-        }
-    }
-
-    .testimonials-content:before {
-        content: "";
-        display: block;
-        position: absolute;
-        border-width: 20px;
-        border-color: #ebebeb transparent transparent;
-        border-style: solid;
-        bottom: -40px;
-        margin-left: 0px;
-    }
-
-    .testimonials-content:after {
-        content: "";
-        display: block;
-        position: absolute;
-        border-width: 15px;
-        border-color: white transparent transparent;
-        border-style: solid;
-        bottom: -30px;
-        margin-left: 5px;
-    }
-
-    .has-post-thumbnail {
-        .testimonials-content:before {
-            margin-left: 100px;
-        }
-
-        .testimonials-content:after {
-            margin-left: 105px;
-        }
-    }
-
-    .testimonials-author {
-        font-size: 22px;
-        margin-left: 40px;
-        display: block;
-        font-style: normal;
-        line-height: 1em;
-    }
-
-    .testimonials-name {
-        display: block;
-        font-weight: bold;
-        line-height: 1.2em;
-    }
-
-    .testimonials-title {
-        font-size: 15px;
-        text-transform: uppercase;
-    }
-
-    .testimonials-url {
-        display: block;
-        font-size: 14px;
-    }
-
-    .type-testimonials.entry {
-        display: block;
-        margin-bottom: 40px;
-    }
-
-    .attachment-rbt_testimonials_image_square.wp-post-image {
-        float: left;
-        margin: -40px 25px 25px -45px;
-        width: 160px;
-        border-radius: 180px;
-        box-shadow: 0 0 0 7px #ebebeb;
-        border: 4px solid white;
+@mixin mobile {
+    @media (max-width: #{$thin}) {
+        @content;
     }
 }
+
+@mixin tablet {
+    @media (min-width: #{$thin}) and (max-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin notdesktop {
+    @media (max-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin desktop-wide {
+    @media (min-width: #{$wide}) {
+        @content;
+    }
+}
+
+@import 'defaults';
+@import 'layout/testimonial-grid.scss';
