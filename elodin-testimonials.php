@@ -2,9 +2,8 @@
 /*
 	Plugin Name: Elodin Testimonials
 	Plugin URI: https://github.com/jonschr/elodin-testimonials
-    GitHub Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.2.0
+	Version: 1.2.1
     Author: Jon Schroeder
     Author URI: https://elod.in
 
