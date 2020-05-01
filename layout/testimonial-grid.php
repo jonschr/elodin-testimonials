@@ -30,6 +30,7 @@ function rb_testimonial_grid_before( $args ) {
     
 }
 
+//* Close the markup after
 add_action( 'after_loop_layout_testimonial_grid', 'wm_testimonial_grid_afer' );
 function wm_testimonial_grid_afer( $args ) {
     echo '</div>';

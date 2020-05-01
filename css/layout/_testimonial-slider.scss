@@ -1,0 +1,68 @@
+.loop-container.loop-layout-testimonial_slider {
+    padding-top: 0px;
+    margin-left: 0;
+    margin-right: 0;
+
+    @include mobile {
+        padding-top: 0;
+    }
+
+    .entry {
+        width: 100%;
+        margin: 0;
+        padding-left: 70px;
+        padding-top: 10px;
+    }
+
+    .attachment-thumbnail {
+        border-radius: 100%;
+        float: right;
+        margin: 0 0 15px 15px;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    .jobtitle {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 15px;
+    }
+
+    .testimonial-content {
+        margin-bottom: 15px;
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 55px;
+            height: 55px;
+            background-image: url(../images/quotes.png);
+            display: block;
+            background-size: contain;
+            position: absolute;
+            left: -70px;
+            top: -10px;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+        }
+    }
+
+
+    .testimonial-content,
+    .testimonial-content p {
+        font-size: 18px;
+        line-height: 1.5em;
+    }
+
+    .testimonial-url {
+        text-decoration: none;
+    }
+
+    h3 {
+        margin-bottom: 0;
+    }
+}

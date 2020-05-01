@@ -59,12 +59,39 @@ function testimonials_add_scripts() {
 		array( 'jquery' ),
 		ELODIN_TESTIMONIALS_VERSION,
 		true
+    );
+    
+    ///////////
+	// SLICK //
+	///////////
+
+	wp_register_script(
+		'slick-main-script',
+		plugin_dir_url( __FILE__ ) . 'vendor/slick/slick.js',
+		array( 'jquery' ),
+		ELODIN_TESTIMONIALS_VERSION,
+		true
+	);
+
+	wp_register_style(
+		'slick-main-style',
+		plugin_dir_url( __FILE__ ) . 'vendor/slick/slick.css',
+		array(),
+		ELODIN_TESTIMONIALS_VERSION
+	);
+
+	wp_register_style(
+		'slick-theme-style',
+		plugin_dir_url( __FILE__ ) . 'vendor/slick/slick-theme.css',
+		array(),
+		CHILD_THEME_VERSION
 	);
 
 }
 
 //* Layouts
 require_once( 'layout/testimonial-grid.php' );
+require_once( 'layout/testimonial-slider.php' );
 
 //* Testimonials archive template
 function testimonials_archive_template( $archive_template ) {
