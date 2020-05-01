@@ -40,7 +40,7 @@ function rb_testimonial_slider_each() {
 	//* Vars
 	$title = get_the_title();
 	$permalink = get_the_permalink();
-	$content = apply_filters( 'the_content', get_the_content() );
+	$content = apply_filters( 'the_content', apply_filters( 'the_content', get_the_content() ) );
 	
 	$jobtitle = get_post_meta( $id, '_rbt_testimonials_title', true );
 	$url = get_post_meta( $id, '_rbt_testimonials_url', true );

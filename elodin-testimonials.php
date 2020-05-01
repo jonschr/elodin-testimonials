@@ -84,7 +84,7 @@ function testimonials_add_scripts() {
 		'slick-theme-style',
 		plugin_dir_url( __FILE__ ) . 'vendor/slick/slick-theme.css',
 		array(),
-		CHILD_THEME_VERSION
+		ELODIN_TESTIMONIALS_VERSION
 	);
 
 }
