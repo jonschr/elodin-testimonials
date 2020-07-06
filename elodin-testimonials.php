@@ -3,7 +3,7 @@
 	Plugin Name: Elodin Testimonials
 	Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.3
+	Version: 1.4
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -22,7 +22,7 @@
 define( 'ELODIN_TESTIMONIALS', dirname( __FILE__ ) );
 
 // Define the version of the plugin
-define ( 'ELODIN_TESTIMONIALS_VERSION', '1.3' );
+define ( 'ELODIN_TESTIMONIALS_VERSION', '1.4' );
 
 //* Register the post type
 include_once( 'lib/post_type.php' );

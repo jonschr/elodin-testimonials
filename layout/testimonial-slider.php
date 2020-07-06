@@ -19,6 +19,7 @@ function rb_testimonial_slider_before( $args ) {
 				dots: true,
 				arrows: false,
 				speed: 300,
+				adaptiveHeight: true,
 				slidesToShow: 1,
 				fade: true,
 				cssEase: 'linear',
