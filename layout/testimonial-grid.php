@@ -55,18 +55,26 @@ function rb_testimonial_grid_each() {
     $urlwithoutwww = str_replace( 'www.', '', $url );
     $urlwithouthttp = str_replace( 'http://', '', $urlwithoutwww );
     $urlwithouthttps = str_replace( 'https://', '', $urlwithouthttp );
+    
+    if ( has_post_thumbnail() )
+        $featuredclass = 'has-featured-image';
 
     //* Markup
-    echo '<div class="content-container">';
+    printf( '<div class="content-container %s">', $featuredclass );
 
         if ( $content ) {
 
             printf( '<div class="testimonial-content">%s', $content );
 
                 edit_post_link('Edit testimonial', '<small>', '</small>', $id, $class);
+                
+                if ( has_post_thumbnail() ) 
+                    printf( '<div class="featured-image" style="background-image:url( %s )"></div>', get_the_post_thumbnail_url( $id, 'medium' ) );
             
             echo '</div>';
         }
+        
+       
             
         if ( $title )
             printf( '<h3 class="title">%s</h3>', $title );
