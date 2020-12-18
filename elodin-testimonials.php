@@ -42,6 +42,10 @@ include_once( 'lib/admin_sidebar.php' );
 //* Custom meta (using the CMB library)
 include_once( 'lib/metabox/metabox.php' );
 
+//* Layouts
+require_once( 'layout/testimonial-grid.php' );
+require_once( 'layout/testimonial-slider.php' );
+
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'testimonials_add_scripts' );
 function testimonials_add_scripts() {
@@ -88,7 +92,3 @@ function testimonials_add_scripts() {
 	);
 
 }
-
-//* Layouts
-require_once( 'layout/testimonial-grid.php' );
-require_once( 'layout/testimonial-slider.php' );
