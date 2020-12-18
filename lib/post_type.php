@@ -29,11 +29,11 @@ function testimonials_register_post_type() {
 		'rewrite' => true,
 		'capability_type' => 'post',
 		'rewrite' => array( 'slug' => 'testimonials' ),
-		'has_archive' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
 		'menu_position' => null,
 		'menu_icon' => 'dashicons-format-chat',
-		'supports' => array( 'title', 'editor', 'genesis-cpt-archives-settings', 'thumbnail' )
+		'supports' => array( 'title', 'editor', 'thumbnail' )
 	);
 
 	register_post_type( 'testimonials', $args );

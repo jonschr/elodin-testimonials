@@ -9,7 +9,7 @@ function rbt_custom_title_admin( $title ){
  
      return $title;
 }
-add_filter( 'enter_title_here', 'rbt_custom_title_admin' );
+// add_filter( 'enter_title_here', 'rbt_custom_title_admin' );
 
 function rbt_content_admin( $content, $post ) {
 
@@ -24,7 +24,7 @@ function rbt_content_admin( $content, $post ) {
 
     return $content;
 }
-add_filter( 'default_content', 'rbt_content_admin', 10, 2 );
+// add_filter( 'default_content', 'rbt_content_admin', 10, 2 );
 
 /**
  * Remove the WordPress SEO metabox
@@ -32,4 +32,4 @@ add_filter( 'default_content', 'rbt_content_admin', 10, 2 );
 function rbt_remove_wp_seo_meta_box() {
     remove_meta_box( 'wpseo_meta', 'testimonials', 'normal' ); // change custom-post-type into the name of your custom post type
 }
-add_action( 'add_meta_boxes', 'rbt_remove_wp_seo_meta_box', 100000 );
+// add_action( 'add_meta_boxes', 'rbt_remove_wp_seo_meta_box', 100000 );
