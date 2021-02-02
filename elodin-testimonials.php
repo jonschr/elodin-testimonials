@@ -3,7 +3,7 @@
 	Plugin Name: Elodin Testimonials
 	Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.5
+	Version: 1.6
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -22,25 +22,25 @@
 define( 'ELODIN_TESTIMONIALS', dirname( __FILE__ ) );
 
 // Define the version of the plugin
-define ( 'ELODIN_TESTIMONIALS_VERSION', '1.5' );
+define ( 'ELODIN_TESTIMONIALS_VERSION', '1.6' );
 
 //* Register the post type
-include_once( 'lib/post_type.php' );
+include_once( 'lib/post-type.php' );
 
 //* Register the taxonomies
 include_once( 'lib/taxonomy.php' );
 
 //* Redirect the single template to /testimonials
-include_once( 'lib/single_redirect.php' );
+include_once( 'lib/single-redirect.php' );
 
 //* Admin Columns Pro settings
-include_once( 'lib/admin_columns.php' );
+include_once( 'lib/admin-columns.php' );
 
 //* Add a link to documentation in menu
-include_once( 'lib/admin_sidebar.php' );
+include_once( 'lib/documentation-sidebar-link.php' );
 
 //* Custom meta (using the CMB library)
-include_once( 'lib/metabox/metabox.php' );
+include_once( 'vendor/metabox/metabox.php' );
 
 //* Layouts
 require_once( 'layout/testimonial-grid.php' );
@@ -92,3 +92,14 @@ function testimonials_add_scripts() {
 	);
 
 }
+
+// Updater
+require 'vendor/plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/jonschr/elodin-testimonials',
+	__FILE__,
+	'elodin-testimonials'
+);
+
+// Optional: Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');

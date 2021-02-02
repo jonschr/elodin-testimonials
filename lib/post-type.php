@@ -22,7 +22,7 @@ function testimonials_register_post_type() {
 	$args = array(
 		'labels' => $labels,
 		'public' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'query_var' => true,

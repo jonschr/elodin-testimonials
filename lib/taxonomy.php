@@ -1,11 +1,8 @@
 <?php
 
-add_action( 'init', 'redbluetestimonials_create_taxonomies', 0 );
+add_action( 'init', 'elodin_testimonials_register_tax', 0 );
+function elodin_testimonials_register_tax() {
 
-// create two taxonomies, genres and writers for the post type "book"
-function redbluetestimonials_create_taxonomies() {
-
-	// Add new taxonomy, NOT hierarchical (like tags)
 	$labels = array(
 		'name'                       => _x( 'Testimonial Categories', 'Testimonial Categories', 'redbluetestimonials' ),
 		'singular_name'              => _x( 'Testimonial Category', 'Testimonial Category', 'redbluetestimonials' ),
