@@ -1,3 +1,5 @@
+### 1.7.1
+* Updating npm modules
 ### 1.7 
 * Updating the documentation link, adding sample shortcodes
 
