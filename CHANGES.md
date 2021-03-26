@@ -1,3 +1,6 @@
+### 1.7 
+* Updating the documentation link, adding sample shortcodes
+
 ### 1.6
 * Improved update capabilities using PUC
 * Removing single view (making the CPT nonpublic)

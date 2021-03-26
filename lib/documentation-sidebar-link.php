@@ -10,7 +10,7 @@ function testimonials_add_documentation_link() {
     $submenu[$menu_slug][] = array(
         'Documentation', 
         'manage_options', 
-        'https://github.com/jonschr/elodin-testimonials',
+        'https://github.com/jonschr/elodin-testimonials#elodin-testimonials',
     );
 }
 
