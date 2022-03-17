@@ -71,7 +71,7 @@ function testimonials_add_scripts() {
 
 	wp_register_script(
 		'slick-main-script',
-		plugin_dir_url( __FILE__ ) . 'vendor/slick/slick.js',
+		plugin_dir_url( __FILE__ ) . 'vendor/slick/slick.min.js',
 		array( 'jquery' ),
 		ELODIN_TESTIMONIALS_VERSION,
 		true
