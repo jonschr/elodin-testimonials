@@ -1,3 +1,7 @@
+### 1.8
+* Escaping values in templates
+* Adding featured image support (for logos by default)
+
 ### 1.7.1
 * Updating npm modules
 ### 1.7 

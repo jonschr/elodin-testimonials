@@ -45,16 +45,12 @@ function rb_testimonial_grid_each() {
 	$id = get_the_ID();
 
 	//* Vars
-	$title = get_the_title();
-    $permalink = get_the_permalink();
+	$title = esc_html( get_the_title() );
+    $permalink = esc_url( get_the_permalink() );
     $content = apply_filters( 'the_content', apply_filters( 'the_content', get_the_content() ) );
-
-    $reference = get_post_meta( $id, '_rbt_testimonials_title', true );
-
-    $url = get_post_meta( $id, '_rbt_testimonials_url', true );
-    $urlwithoutwww = str_replace( 'www.', '', $url );
-    $urlwithouthttp = str_replace( 'http://', '', $urlwithoutwww );
-    $urlwithouthttps = str_replace( 'https://', '', $urlwithouthttp );
+    $reference = esc_html( get_post_meta( $id, '_rbt_testimonials_title', true ) );
+    $url = esc_url( get_post_meta( $id, '_rbt_testimonials_url', true ) );
+    $background = get_the_post_thumbnail_url( get_the_ID(), 'large' );
     
     if ( has_post_thumbnail() )
         $featuredclass = 'has-featured-image';
@@ -68,8 +64,8 @@ function rb_testimonial_grid_each() {
 
                 edit_post_link('Edit testimonial', '<small>', '</small>', $id, $class);
                 
-                if ( has_post_thumbnail() ) 
-                    printf( '<div class="featured-image" style="background-image:url( %s )"></div>', get_the_post_thumbnail_url( $id, 'medium' ) );
+                if ( $background ) 
+                    printf( '<div class="featured-image" style="background-image:url( %s )"></div>', $background );
             
             echo '</div>';
         }
@@ -83,7 +79,7 @@ function rb_testimonial_grid_each() {
             printf( '<p class="title">%s</p>', $reference );
 
         if ( $url )
-            printf( '<a class="website-link" target="_blank" href="%s"></a>', $urlwithouthttps );
+            printf( '<a class="website-link" target="_blank" href="%s"></a>', $url );
 
     echo '</div>';
     
