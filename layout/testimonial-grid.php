@@ -51,6 +51,7 @@ function rb_testimonial_grid_each() {
     $reference = esc_html( get_post_meta( $id, '_rbt_testimonials_title', true ) );
     $url = esc_url( get_post_meta( $id, '_rbt_testimonials_url', true ) );
     $background = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+    $featuredclass = null;
     
     if ( has_post_thumbnail() )
         $featuredclass = 'has-featured-image';
@@ -62,7 +63,7 @@ function rb_testimonial_grid_each() {
 
             printf( '<div class="testimonial-content">%s', $content );
 
-                edit_post_link('Edit testimonial', '<small>', '</small>', $id, $class);
+                edit_post_link('Edit testimonial', '<small>', '</small>', $id, 'edit-link');
                 
                 if ( $background ) 
                     printf( '<div class="featured-image" style="background-image:url( %s )"></div>', $background );
