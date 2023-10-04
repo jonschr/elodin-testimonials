@@ -1,3 +1,7 @@
+## 1.9
+
+-   Making the slider autoscroll
+
 ## 1.8.1
 
 -   Fixing a minor bug in the grid layout

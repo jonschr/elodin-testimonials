@@ -23,6 +23,8 @@ function rb_testimonial_slider_before( $args ) {
 				slidesToShow: 1,
 				fade: true,
 				cssEase: 'linear',
+				autoplay: true,
+				autoplaySpeed: 5000,
 			});
 						
 		});
