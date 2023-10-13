@@ -114,4 +114,4 @@ function ac_custom_column_settings_241c5b99() {
 		)
 	) );
 }
-add_action( 'ac/ready', 'ac_custom_column_settings_241c5b99' );
+// add_action( 'ac/ready', 'ac_custom_column_settings_241c5b99' );

@@ -7,8 +7,7 @@
     display: block;
     margin: 0 !important;
 
-
-    >* {
+    > * {
         display: block;
         position: absolute;
         margin: 0px !important;
@@ -17,15 +16,15 @@
         overflow: hidden;
     }
 
-    >.muuri-item-dragging {
+    > .muuri-item-dragging {
         z-index: 3;
     }
 
-    >.muuri-item-releasing {
+    > .muuri-item-releasing {
         z-index: 2;
     }
 
-    >.muuri-item-hidden {
+    > .muuri-item-hidden {
         z-index: 0;
     }
 
@@ -44,13 +43,9 @@
     display: block !important;
 
     .entry {
-        width: calc(100% / 5 - 1px);
+        width: calc(100% / 4 - 1px);
         padding: 20px;
         overflow: visible;
-
-        @media (max-width: 1600px) {
-            width: calc(100% / 4 - 1px);
-        }
 
         @media (max-width: 1200px) {
             width: calc(100% / 3 - 1px);
@@ -68,7 +63,6 @@
     .content-container {
         padding: 0;
         position: relative;
-
     }
 
     .featured-image {
@@ -85,7 +79,7 @@
         position: relative;
 
         &:after {
-            content: "";
+            content: '';
             position: absolute;
             width: 20px;
             height: 20px;
@@ -116,7 +110,6 @@
     }
 
     .testimonial-content {
-
         margin-bottom: 15px;
         padding: 20px;
         background-color: white;
@@ -129,11 +122,10 @@
                 left: 110px;
             }
 
-            >h3,
-            >p {
+            > h3,
+            > p {
                 margin-left: 65px;
             }
-
         }
     }
 }

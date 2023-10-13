@@ -20,6 +20,8 @@
 
 // Plugin directory
 define( 'ELODIN_TESTIMONIALS', dirname( __FILE__ ) );
+define( 'ELODIN_TESTIMONIALS_DIR', plugin_dir_path( __FILE__ ) );
+define( 'ELODIN_TESTIMONIALS_PATH', plugin_dir_url( __FILE__ ) );
 
 // Define the version of the plugin
 define ( 'ELODIN_TESTIMONIALS_VERSION', '1.8.1' );
@@ -92,6 +94,34 @@ function testimonials_add_scripts() {
 	);
 
 }
+
+/////////
+// ACP //
+/////////
+
+use AC\ListScreenRepository\Storage\ListScreenRepositoryFactory;
+use AC\ListScreenRepository\Rules;
+use AC\ListScreenRepository\Rule;
+add_filter( 'acp/storage/repositories', function( array $repositories, ListScreenRepositoryFactory $factory ) {
+    
+    //! Change $writable to true to allow changes to columns for the content types below
+    $writable = true;
+    
+    // 2. Add rules to target individual list tables.
+    // Defaults to Rules::MATCH_ANY added here for clarity, other option is Rules::MATCH_ALL
+    $rules = new Rules( Rules::MATCH_ANY );
+    $rules->add_rule( new Rule\EqualType( 'testimonials' ) );
+    
+    // 3. Register your repository to the stack
+    $repositories['rent-fetch'] = $factory->create(
+        ELODIN_TESTIMONIALS_DIR . '/acp-settings',
+        $writable,
+        $rules
+    );
+    
+    return $repositories;
+    
+}, 10, 2 );
 
 // Updater
 require 'vendor/plugin-update-checker/plugin-update-checker.php';
