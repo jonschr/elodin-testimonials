@@ -1,3 +1,7 @@
+## 1.10
+
+-   Improving the ACP functionality to show status, new rows, and updating to their new system for saving fields.
+
 ## 1.9
 
 -   Making the slider autoscroll
