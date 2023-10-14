@@ -3,7 +3,7 @@
 	Plugin Name: Elodin Testimonials
 	Plugin URI: https://github.com/jonschr/elodin-testimonials
 	Description: Just another testimonials plugin
-	Version: 1.10
+	Version: 1.10.1
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -24,7 +24,7 @@ define( 'ELODIN_TESTIMONIALS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ELODIN_TESTIMONIALS_PATH', plugin_dir_url( __FILE__ ) );
 
 // Define the version of the plugin
-define ( 'ELODIN_TESTIMONIALS_VERSION', '1.10' );
+define ( 'ELODIN_TESTIMONIALS_VERSION', '1.10.1' );
 
 //* Register the post type
 include_once( 'lib/post-type.php' );
@@ -105,7 +105,7 @@ use AC\ListScreenRepository\Rule;
 add_filter( 'acp/storage/repositories', function( array $repositories, ListScreenRepositoryFactory $factory ) {
     
     //! Change $writable to true to allow changes to columns for the content types below
-    $writable = true;
+    $writable = false;
     
     // 2. Add rules to target individual list tables.
     // Defaults to Rules::MATCH_ANY added here for clarity, other option is Rules::MATCH_ALL
