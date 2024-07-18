@@ -1,3 +1,7 @@
+## 1.11
+
+-   Making slick play nice with common use cases
+
 ## 1.10
 
 -   Improving the ACP functionality to show status, new rows, and updating to their new system for saving fields.
