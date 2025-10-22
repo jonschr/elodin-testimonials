@@ -41,6 +41,9 @@ include_once( 'lib/admin-columns.php' );
 //* Add a link to documentation in menu
 include_once( 'lib/documentation-sidebar-link.php' );
 
+//* Bulk uploader
+include_once( 'lib/bulk-uploader.php' );
+
 //* Custom meta (using the CMB library)
 include_once( 'vendor/metabox/metabox.php' );
 

@@ -1,0 +1,6 @@
+id,testimonial,firstname,lastname,title,url,photo,category
+,This is a sample testimonial. The service was excellent and I highly recommend it!,John,Doe,Happy Customer,https://example.com/profile1,https://example.com/photo1.jpg,Customer Service
+,Amazing experience! The team went above and beyond to make sure everything was perfect.,Jane,Smith,Satisfied Client,https://example.com/profile2,https://example.com/photo2.jpg,Product Quality
+,I couldn't be happier with the results. Professional, efficient, and friendly service.,Mike,Johnson,Repeat Customer,https://example.com/profile3,https://example.com/photo3.jpg,Customer Service
+,Outstanding quality and attention to detail. Will definitely use again.,Sarah,Williams,Loyal Patron,https://example.com/profile4,https://example.com/photo4.jpg,Product Quality
+,Exceptional service from start to finish. Exceeded all my expectations!,David,Brown,Verified User,https://example.com/profile5,https://example.com/photo5.jpg,Support
