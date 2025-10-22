@@ -2,6 +2,173 @@
 
 add_action( 'admin_menu', 'testimonials_add_bulk_upload_page' );
 
+function testimonials_find_existing_attachment( $image_url ) {
+    // First, check if this exact URL is already in the media library
+    $attachment_id = attachment_url_to_postid( $image_url );
+    if ( $attachment_id ) {
+        return $attachment_id;
+    }
+
+    // Get the filename from the external URL
+    $filename = basename( parse_url( $image_url, PHP_URL_PATH ) );
+    if ( empty( $filename ) ) {
+        return false;
+    }
+
+    // Download the external image temporarily
+    $tmp_file = download_url( $image_url );
+    if ( is_wp_error( $tmp_file ) ) {
+        return false;
+    }
+
+    // Get external image properties
+    $external_size = filesize( $tmp_file );
+    $external_hash = md5_file( $tmp_file );
+
+    // Get image dimensions if possible
+    $external_dimensions = @getimagesize( $tmp_file );
+    $external_width = $external_dimensions ? $external_dimensions[0] : 0;
+    $external_height = $external_dimensions ? $external_dimensions[1] : 0;
+
+    // Query for attachments with similar properties
+    $args = array(
+        'post_type'      => 'attachment',
+        'post_status'    => 'inherit',
+        'posts_per_page' => -1,
+        'post_mime_type' => 'image',
+        'meta_query'     => array(
+            'relation' => 'OR',
+            array(
+                'key'     => '_wp_attached_file',
+                'value'   => $filename,
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key'     => '_original_file_hash',
+                'value'   => $external_hash,
+                'compare' => '='
+            )
+        )
+    );
+
+    $attachments = get_posts( $args );
+
+    foreach ( $attachments as $attachment ) {
+        $attachment_path = get_attached_file( $attachment->ID );
+
+        // Check stored original hash first (most reliable)
+        $stored_hash = get_post_meta( $attachment->ID, '_original_file_hash', true );
+        if ( $stored_hash === $external_hash ) {
+            @unlink( $tmp_file );
+            return $attachment->ID;
+        }
+
+        // Check current file hash as fallback
+        if ( file_exists( $attachment_path ) ) {
+            $local_size = filesize( $attachment_path );
+            $local_hash = md5_file( $attachment_path );
+
+            // Compare file sizes and hashes
+            if ( $external_size === $local_size && $external_hash === $local_hash ) {
+                @unlink( $tmp_file );
+                return $attachment->ID;
+            }
+
+            // Check dimensions as additional verification
+            $local_dimensions = @getimagesize( $attachment_path );
+            if ( $local_dimensions &&
+                 $external_width === $local_dimensions[0] &&
+                 $external_height === $local_dimensions[1] &&
+                 $external_size === $local_size ) {
+                @unlink( $tmp_file );
+                return $attachment->ID;
+            }
+        }
+    }
+
+    @unlink( $tmp_file );
+    return false;
+}
+
+function testimonials_handle_featured_image( $post_id, $image_url ) {
+    // Check if the image URL is from this site
+    $site_url = get_site_url();
+    if ( strpos( $image_url, $site_url ) === 0 ) {
+        // It's already a local image, check if it's an attachment
+        $attachment_id = attachment_url_to_postid( $image_url );
+        if ( $attachment_id ) {
+            set_post_thumbnail( $post_id, $attachment_id );
+            return $attachment_id;
+        }
+        // If it's a local URL but not an attachment, we can't handle it
+        return new WP_Error( 'invalid_local_image', 'Local image URL is not a valid attachment.' );
+    }
+
+    // Check if this external image already exists in the media library
+    $existing_attachment_id = testimonials_find_existing_attachment( $image_url );
+    if ( $existing_attachment_id ) {
+        set_post_thumbnail( $post_id, $existing_attachment_id );
+        return $existing_attachment_id;
+    }
+
+    // It's an external image that doesn't exist locally, download it
+    $tmp_file = download_url( $image_url );
+    if ( is_wp_error( $tmp_file ) ) {
+        return $tmp_file;
+    }
+
+    // Get the filename from the URL
+    $filename = basename( parse_url( $image_url, PHP_URL_PATH ) );
+    if ( empty( $filename ) ) {
+        $filename = 'testimonial-image-' . time() . '.jpg';
+    }
+
+    // Get file type
+    $file_type = wp_check_filetype( $filename );
+    if ( ! $file_type['type'] ) {
+        @unlink( $tmp_file );
+        return new WP_Error( 'invalid_file_type', 'Could not determine file type.' );
+    }
+
+    // Upload the file to media library
+    $upload_dir = wp_upload_dir();
+    $new_filename = wp_unique_filename( $upload_dir['path'], $filename );
+    $new_file = $upload_dir['path'] . '/' . $new_filename;
+
+    if ( ! copy( $tmp_file, $new_file ) ) {
+        @unlink( $tmp_file );
+        return new WP_Error( 'upload_failed', 'Could not copy file to upload directory.' );
+    }
+
+    @unlink( $tmp_file );
+
+    // Create attachment
+    $attachment = array(
+        'post_mime_type' => $file_type['type'],
+        'post_title'     => sanitize_file_name( $filename ),
+        'post_content'   => '',
+        'post_status'    => 'inherit'
+    );
+
+    $attachment_id = wp_insert_attachment( $attachment, $new_file, $post_id );
+    if ( is_wp_error( $attachment_id ) ) {
+        return $attachment_id;
+    }
+
+    // Store the original file hash for future deduplication
+    update_post_meta( $attachment_id, '_original_file_hash', md5_file( $tmp_file ) );
+
+    // Generate metadata
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $new_file );
+    wp_update_attachment_metadata( $attachment_id, $attachment_data );
+
+    // Set as featured image
+    set_post_thumbnail( $post_id, $attachment_id );
+
+    return $attachment_id;
+}
+
 function testimonials_export_to_csv() {
     if ( ! isset( $_GET['testimonials_export'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'testimonials_export' ) ) {
         return;
@@ -41,7 +208,13 @@ function testimonials_export_to_csv() {
         // Get meta fields
         $title_meta = get_post_meta( $testimonial->ID, '_rbt_testimonials_title', true );
         $url_meta = get_post_meta( $testimonial->ID, '_rbt_testimonials_url', true );
-        $photo_meta = ''; // Placeholder for future photo handling
+
+        // Get featured image URL
+        $photo_meta = '';
+        $thumbnail_id = get_post_thumbnail_id( $testimonial->ID );
+        if ( $thumbnail_id ) {
+            $photo_meta = wp_get_attachment_url( $thumbnail_id );
+        }
 
         // Get categories (testimonialcategories taxonomy)
         $categories = wp_get_post_terms( $testimonial->ID, 'testimonialcategories', array( 'fields' => 'names' ) );
@@ -157,8 +330,9 @@ function testimonials_process_csv_upload() {
         $post_title = trim( $firstname . ' ' . $lastname );
         // Leave title blank if no name is provided
 
-        // Check if this is an update (has valid ID) or new creation
-        if ( $id > 0 && get_post_type( $id ) === 'testimonials' ) {
+        // Check if this is an update (has valid existing ID) or new creation
+        $existing_post = $id > 0 ? get_post( $id ) : null;
+        if ( $existing_post && $existing_post->post_type === 'testimonials' ) {
             // Update existing testimonial
             $post_data = array(
                 'ID'           => $id,
@@ -175,7 +349,7 @@ function testimonials_process_csv_upload() {
 
             $action = 'updated';
         } else {
-            // Create new testimonial
+            // Create new testimonial (including when ID is invalid/non-existent)
             $post_data = array(
                 'post_title'   => $post_title,
                 'post_content' => $testimonial,
@@ -243,6 +417,17 @@ function testimonials_process_csv_upload() {
         } else {
             // Clear categories if none provided
             wp_set_post_terms( $post_id, array(), 'testimonialcategories' );
+        }
+
+        // Process photo/featured image
+        if ( ! empty( $photo ) ) {
+            $attachment_id = testimonials_handle_featured_image( $post_id, $photo );
+            if ( is_wp_error( $attachment_id ) ) {
+                $errors[] = 'Failed to set featured image: ' . $attachment_id->get_error_message();
+            }
+        } else {
+            // Clear featured image if none provided
+            delete_post_thumbnail( $post_id );
         }
 
         if ( $action === 'updated' ) {

@@ -1,3 +1,7 @@
+## 1.12
+
+-   Adding bulk importer
+
 ## 1.11
 
 -   Making slick play nice with common use cases
